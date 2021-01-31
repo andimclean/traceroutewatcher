@@ -14,7 +14,25 @@ export interface IpAddress {
   outSize: Sizes;
 }
 
-export interface IpAddressArgumented extends IpAddress {
+export interface GeoLocationObj {
+  _id?: string;
+  latitude: number;
+  longitude: number;
+}
+
+export type GeoLocation = GeoLocationObj | null;
+
+export interface Ip {
+  address: string;
+  geolocation: GeoLocation;
+}
+export interface IpAddressAugmented {
+  outIP: Ip;
+  outPort: number;
+  inIp: Ip;
+  inPort: number;
+  inSize: Sizes;
+  outSize: Sizes;
   isInternal: boolean;
-  routes: string[];
+  routes: Ip[];
 }
